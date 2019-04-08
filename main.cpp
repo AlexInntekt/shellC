@@ -14,7 +14,6 @@ int main(int argc, char **argv)
 
   run_program();
 
-
   return EXIT_SUCCESS;
 }
 
@@ -29,14 +28,15 @@ void run_program(void)
     printf("> ");
     string input; 
       
-    cout << "Point A1 \n"; 
+    //cout << "Point A1 \n"; 
     string* commands = new string[3];
     getline (cin, input); 
     commands = extract_tokens(input);
 
-    for(int i=0;i<=3;i++)
+    for(int i=0;i<3;i++)
     {
       cout << commands[i] << "\n";
+      
     }
 
   } while(running);
@@ -46,7 +46,7 @@ void run_program(void)
 
 string* extract_tokens(string str) 
 { 
-   cout << "Point A2 \n";
+   //cout << "Point A2 \n";
    string* commands = new string[3];
    string token = ""; 
    int i=0;
@@ -56,11 +56,11 @@ string* extract_tokens(string str)
        { 
            //cout << token << endl; 
 
-           //token
            commands[i]=token;
            i++;
 
            token = ""; 
+
        } 
        else
        { 
@@ -74,9 +74,12 @@ string* extract_tokens(string str)
 
 void run_arg_1(string arg)
 {
+     cout << "run_arg_1 \n";
+
      if(arg.compare("dirs")==1)
      {
-
+        cout << "exit";
+        //system("exit");
      }
 }
 
