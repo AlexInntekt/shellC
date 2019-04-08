@@ -48,26 +48,22 @@ string* extract_tokens(string str)
 { 
    //cout << "Point A2 \n";
    string* commands = new string[3];
-   string token = ""; 
-   int i=0;
+   string word = "";
+   int i=0; 
    for (auto x : str) 
    { 
        if (x == ' ') 
        { 
-           //cout << token << endl; 
-
-           commands[i]=token;
+           commands[i]=word;
            i++;
-
-           token = ""; 
-
+           word = ""; 
        } 
        else
        { 
-           token = token + x; 
+           word = word + x; 
        } 
    }  
-   //cout << token << endl; 
+   commands[i]=word;
 
    return commands;
 } 
