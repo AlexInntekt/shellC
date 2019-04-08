@@ -6,7 +6,8 @@
 using namespace std; 
   
 void run_program(void);
-void extract_tokens(string str);
+string* extract_tokens(string str);
+void run_arg_1(string arg);
 
 int main(int argc, char **argv)
 {
@@ -22,36 +23,64 @@ int main(int argc, char **argv)
 void run_program(void)
 {
 
-  int status=1;
+  int running=1;
 
   do {
     printf("> ");
     string input; 
       
     cout << "Point A1 \n"; 
+    string* commands = new string[3];
     getline (cin, input); 
-    extract_tokens(input);
+    commands = extract_tokens(input);
 
+    for(int i=0;i<=3;i++)
+    {
+      cout << commands[i] << "\n";
+    }
 
-  } while(status);
+  } while(running);
 }
 
 
 
-void extract_tokens(string str) 
+string* extract_tokens(string str) 
 { 
-   string word = ""; 
+   cout << "Point A2 \n";
+   string* commands = new string[3];
+   string token = ""; 
+   int i=0;
    for (auto x : str) 
    { 
        if (x == ' ') 
        { 
-           cout << word << endl; 
-           word = ""; 
+           //cout << token << endl; 
+
+           //token
+           commands[i]=token;
+           i++;
+
+           token = ""; 
        } 
        else
        { 
-           word = word + x; 
+           token = token + x; 
        } 
    }  
-   cout << word << endl; 
+   //cout << token << endl; 
+
+   return commands;
 } 
+
+void run_arg_1(string arg)
+{
+     if(arg.compare("dirs")==1)
+     {
+
+     }
+}
+
+
+
+
+
