@@ -3,12 +3,13 @@
 #include <iostream> 
 #include <string> 
 #include <stdio.h>
+#include<unistd.h> 
 
 using namespace std; 
   
 void run_program(void);
 string* extract_tokens(string str);
-int run_arg_1(string arg);
+int run_arg(string arg, string str2);
 
 int main(int argc, char **argv)
 {
@@ -16,6 +17,8 @@ int main(int argc, char **argv)
   
 
   run_program();
+
+  
 
   return EXIT_SUCCESS;
 }
@@ -42,7 +45,7 @@ void run_program(void)
       // run_arg_1(commands[i]);
     }
 
-    run_arg_1(commands[0]);
+    run_arg(commands[0], commands[1]);
 
   } while(running);
 }
@@ -75,7 +78,7 @@ string* extract_tokens(string str)
 
 
 
-int run_arg_1(string arg)
+int run_arg(string arg, string arg2)
 {
      //cout << "run_arg_1 \n";
      int status=1;
@@ -86,13 +89,38 @@ int run_arg_1(string arg)
         //system("exit");
      }
 
-     if(string("dire")==string(arg))
+     //show all childs of current directory
+     if(string("sldir")==string(arg))
      {
         cout << system("ls");
-        //system("exit");
+     }
+
+     //show path
+     if(string("spath")==string(arg))
+     {
+        cout << getenv("PATH");
+     }
+
+     //get back one parent
+     if(string("back")==string(arg))
+     {
+        chdir("..");
+     }
+
+     //show path of current directory
+     if(string("sdir")==string(arg))
+     {
+        char cwd[PATH_MAX];
+         if (getcwd(cwd, sizeof(cwd)) != NULL) {
+             printf("Current working dir: %s\n", cwd);
+         } else {
+             perror("getcwd() error");
+             return 1;
+         }
      }
 
      
+      
 
      return status;
 }
