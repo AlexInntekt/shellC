@@ -127,6 +127,13 @@ int run_arg(string arg, string arg2)
          return status;
      }
 
+     //go to a specific directory
+     if(string("cdir")==string(arg))
+     {
+        chdir(arg2.c_str());
+
+        return status;
+     }
      
       
      cout << "set of commands not found";
