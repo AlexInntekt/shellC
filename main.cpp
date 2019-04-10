@@ -31,7 +31,7 @@ void run_program(void)
   int running=1;
 
   do {
-    printf("> ");
+    printf("\n> ");
     string input; 
       
     //cout << "Point A1 \n"; 
@@ -85,26 +85,33 @@ int run_arg(string arg, string arg2)
      
      if(string("halt")==string(arg))
      {
-        cout << "exit";
-        //system("exit");
+        cout << "Exiting shell";
+        exit(0);
+
      }
 
      //show all childs of current directory
      if(string("sldir")==string(arg))
      {
         cout << system("ls");
+
+        return status;
      }
 
      //show path
      if(string("spath")==string(arg))
      {
         cout << getenv("PATH");
+
+        return status;
      }
 
      //get back one parent
      if(string("back")==string(arg))
      {
         chdir("..");
+
+        return status;
      }
 
      //show path of current directory
@@ -115,13 +122,14 @@ int run_arg(string arg, string arg2)
              printf("Current working dir: %s\n", cwd);
          } else {
              perror("getcwd() error");
-             return 1;
          }
+
+         return status;
      }
 
      
       
-
+     cout << "set of commands not found";
      return status;
 }
 
