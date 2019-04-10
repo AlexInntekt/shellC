@@ -2,15 +2,18 @@
 #include <bits/stdc++.h> 
 #include <iostream> 
 #include <string> 
+#include <stdio.h>
 
 using namespace std; 
   
 void run_program(void);
 string* extract_tokens(string str);
-void run_arg_1(string arg);
+int run_arg_1(string arg);
 
 int main(int argc, char **argv)
 {
+
+  
 
   run_program();
 
@@ -35,9 +38,11 @@ void run_program(void)
 
     for(int i=0;i<3;i++)
     {
-      cout << commands[i] << "\n";
-      
+      //cout << commands[i] << "\n";
+      // run_arg_1(commands[i]);
     }
+
+    run_arg_1(commands[0]);
 
   } while(running);
 }
@@ -68,15 +73,28 @@ string* extract_tokens(string str)
    return commands;
 } 
 
-void run_arg_1(string arg)
-{
-     cout << "run_arg_1 \n";
 
-     if(arg.compare("dirs")==1)
+
+int run_arg_1(string arg)
+{
+     //cout << "run_arg_1 \n";
+     int status=1;
+     
+     if(string("halt")==string(arg))
      {
         cout << "exit";
         //system("exit");
      }
+
+     if(string("dire")==string(arg))
+     {
+        cout << system("ls");
+        //system("exit");
+     }
+
+     
+
+     return status;
 }
 
 
