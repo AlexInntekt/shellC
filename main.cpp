@@ -14,7 +14,20 @@ int run_arg(string arg, string str2);
 int main(int argc, char **argv)
 {
 
-  
+  cout << "\n *******************\n";
+  cout << "Welcome in alexinntekt shell! \n";
+  cout << "This is a beautifull shell.\n";
+  cout << "Available commands: \n";
+
+  cout << "halt: exit shell\n";
+  cout << "sldir: see all files and directories in current directory\n";
+  cout << "spath: see default path of executables of default shell\n";
+  cout << "back: get back one directory in the tree\n";
+  cout << "sdir: see current directory\n";
+  cout << "cdir: go to a specific directory: cdir name/of/path\n";
+  cout << "help: see all available commands";
+
+  cout << "\n *******************\n";
 
   run_program();
 
@@ -134,7 +147,25 @@ int run_arg(string arg, string arg2)
 
         return status;
      }
-     
+
+     if(string("help")==string(arg))
+     {
+        cout << "halt: exit shell\n";
+        cout << "sldir: see all files and directories in current directory\n";
+        cout << "spath: see default path of executables of default shell\n";
+        cout << "back: get back one directory in the tree\n";
+        cout << "sdir: see current directory\n";
+        cout << "cdir: go to a specific directory: cdir name/of/path\n";
+         
+
+        return status;
+     }
+
+     if(string("")==string(arg))
+     {
+       return 0;
+     }
+
       
      cout << "set of commands not found";
      return status;
